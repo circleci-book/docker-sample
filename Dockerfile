@@ -13,8 +13,7 @@ WORKDIR /docker-sample
 
 COPY . /docker-sample
 
-ENV BUNDLE_PATH vendor/bundle
-RUN bundle check || bundle install --path vendor/bundle
+RUN bundle check  --path vendor/bundle || bundle install --path vendor/bundle
 
 RUN yarn install
 

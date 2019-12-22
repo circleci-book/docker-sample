@@ -3,15 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.5-node
-        environment:
-          PGHOST: localhost
-          PGUSER: postgres
-          RAILS_ENV: test
-      - image: circleci/postgres:9.6.9-alpine
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: sample_app_test
-          POSTGRES_PASSWORD: ""
     steps:
       - checkout
 
