@@ -30,10 +30,10 @@ jobs:
           command: docker pull ${REGISTORY_URL}:latest
       - run:
           name: イメージのビルド
-          command: docker build -t ${REGISTORY_URL} --cache-from ${REGISTORY_URL}:latest .
+          command: docker build -t ${REGISTORY_URL} --cache-from ${REGISTORY_URL} .
       - run:
           name: ビルドしたイメージはそのままpushできます
-          command: docker push ${REGISTORY_URL}:latest
+          command: docker push ${REGISTORY_URL}
 
 workflows:
     version: 2
