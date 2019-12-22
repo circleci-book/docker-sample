@@ -7,13 +7,21 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && apt-get install -y yarn
 
-RUN mkdir /docker-sample
+ENV APP_ROOT /docker-sample
 
-WORKDIR /docker-sample
+RUN mkdir ${APP_ROOT}
 
-COPY . /docker-sample
+WORKDIR ${APP_ROOT}
 
-RUN bundle check  --path vendor/bundle || bundle install --path vendor/bundle
+COPY Gemfile ${APP_ROOT}
+
+COPY Gemfile.lock ${APP_ROOT}
+
+RUN bundle check || bundle install
+
+COPY package.json ${APP_ROOT}
+
+COPY yarn.lock ${APP_ROOT}
 
 RUN yarn install
 
