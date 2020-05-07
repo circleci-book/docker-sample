@@ -11,7 +11,7 @@ jobs:
           version: 17.05.0-ce
 
       - run:
-          name: プライベートイメージの場合は、`docker login`が必要です。
+          name: Docker Hubへログイン
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - run:
           name: 環境変数REGISTORY_URLの設定
