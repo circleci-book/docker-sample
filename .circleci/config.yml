@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  build_and_push:
     docker:
       - image: circleci/ruby:2.6.5-node
     steps:
@@ -31,4 +31,4 @@ workflows:
     version: 2
     main:
       jobs:
-        - build
+        - build_and_push
