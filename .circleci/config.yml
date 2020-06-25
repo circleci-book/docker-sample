@@ -15,7 +15,6 @@ jobs:
       - run:
           name: 指定イメージのpull
           command: docker pull ${REGISTORY_URL}:latest
-      - run: docker images
       - run:
           name: イメージのビルド
           command: docker build -t ${REGISTORY_URL} --cache-from ${REGISTORY_URL}:latest .
