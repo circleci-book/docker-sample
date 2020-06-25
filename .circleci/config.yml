@@ -5,10 +5,7 @@ jobs:
       - image: circleci/ruby:2.6.5-node
     steps:
       - checkout
-      - setup_remote_docker:
-      # 有料プランのみ有効にできる
-          # docker_layer_caching: true
-          version: 17.05.0-ce
+      - setup_remote_docker
       - run:
           name: Docker Hubへログイン
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
