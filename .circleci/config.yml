@@ -5,11 +5,10 @@ jobs:
       - image: circleci/ruby:2.6.5-node
     steps:
       - checkout
-
       - setup_remote_docker:
+      # 有料プランのみ有効にできる
           # docker_layer_caching: true
           version: 17.05.0-ce
-
       - run:
           name: Docker Hubへログイン
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
@@ -24,7 +23,7 @@ jobs:
           name: イメージのビルド
           command: docker build -t ${REGISTORY_URL} --cache-from ${REGISTORY_URL}:latest .
       - run:
-          name: ビルドしたイメージはそのままpushできます
+          name: ビルドしたイメージはそのままpushが可能
           command: docker push ${REGISTORY_URL}
 
 workflows:
